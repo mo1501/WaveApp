@@ -64,7 +64,7 @@ const Form = () => {
     formData.append("picturePath", values.picture.name);
 
     const savedUserResponse = await fetch(
-      "https://wave-app-backend.vercel.app:3001/auth/register",
+      "https://wave-app-backend.vercel.app:6001/auth/register",
       {
         method: "POST",
         body: formData,
