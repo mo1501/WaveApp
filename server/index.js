@@ -31,7 +31,9 @@ app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 app.use(cors({
-    origin: 'https://wave-app-frontend.vercel.app'
+    origin: 'https://wave-app-frontend.vercel.app',
+    methods: ["POST", "GET"],
+    credentials: true,
 }));
 app.use("/assets", express.static(path.join(__dirname, 'public/assets')));
 
@@ -46,6 +48,10 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage });
+
+app.get("/", (req,res) => {
+    res.json("Hello");
+})
 
 /* ROUTES WITH FILES*/
 app.post("/auth/register", upload.single("picture"), register);
