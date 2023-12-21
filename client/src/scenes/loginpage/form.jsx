@@ -90,7 +90,7 @@ const Form = () => {
         setPageType("login");
       }
     } catch (error) {
-      setError(error.message);
+      setError(`Something went wrong ${error.message}`);
     } finally {
       setLoading(false);
     }

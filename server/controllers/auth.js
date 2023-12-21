@@ -5,6 +5,7 @@ import User from "../models/user.js"
 /* REGISTER USER */
 export const register = async (req, res) => {
     try {
+        console.log("Received file:", req.file);
         const {
             firstName,
             lastName,
@@ -32,7 +33,8 @@ export const register = async (req, res) => {
         const savedUser = await newUser.save();
         res.status(201).json(savedUser);
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        console.error("Error during registration:", error.message);
+        res.status(500).json({ error: "Internal Server Error" });
     }
 }
 
