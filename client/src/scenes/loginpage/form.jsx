@@ -284,6 +284,8 @@ const Form = () => {
             >
               {isLogin ? "LOGIN" : "REGISTER"}
             </Button>
+            {loading && <CircularProgress color="primary" />}
+            {error && <Alert variant="danger">{error}</Alert>}
             <Typography
               onClick={() => {
                 setPageType(isLogin ? "register" : "login");
@@ -302,8 +304,7 @@ const Form = () => {
                 ? "Don't have an account? Sign Up here."
                 : "Already have an account? Login here."}
             </Typography>
-            {loading && <CircularProgress color="primary" />}
-            {error && <Alert variant="danger">{error}</Alert>}
+            
 
           </Box>
         </form>
