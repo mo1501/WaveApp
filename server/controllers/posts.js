@@ -1,11 +1,15 @@
 import Post from "../models/post.js";
 import User from "../models/user.js";
+import { cloudinary, storage } from "../cloudinary/index.js";
+
 
 /* CREATE */
 export const createPost = async (req, res) => {
     try {
         const { userId, description, picturePath } = req.body;
         const user = await User.findById(userId);
+        const pictureResult = await cloudinary.uploader.upload(req.file.path);
+
         const newPost = new Post({
             userId,
             firstName: user.firstName,
@@ -13,7 +17,7 @@ export const createPost = async (req, res) => {
             location: user.location,
             description,
             userPicturePath: user.picturePath,
-            picturePath,
+            picturePath: pictureResult.secure_url,
             likes: {},
             comments: [],
         });
