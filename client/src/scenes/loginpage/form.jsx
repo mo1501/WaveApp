@@ -75,6 +75,8 @@ const Form = () => {
         {
           method: "POST",
           body: formData,
+          credentials: "include",
+          
         }
       );
 
