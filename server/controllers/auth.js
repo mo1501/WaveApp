@@ -19,13 +19,13 @@ export const register = async (req, res) => {
         } = req.body;
         const salt = await bcrypt.genSalt();
         const passwordHash = await bcrypt.hash(password, salt);
-        const result = await cloudinary.uploader.upload(req.file.path);
+        const pictureResult = await cloudinary.uploader.upload(req.file.buffer.toString("base64"));
         const newUser = new User({
             firstName,
             lastName,
             email,
             password: passwordHash,
-            picturePath: result.secure_url,
+            picturePath: pictureResult.secure_url,
             friends,
             location,
             occupation,
