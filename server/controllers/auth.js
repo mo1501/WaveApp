@@ -6,6 +6,8 @@ import { cloudinary, storage } from "../cloudinary/index.js";
 
 /* REGISTER USER */
 export const register = async (req, res) => {
+    console.log(`req file path ${req.file.path}`);
+    console.log(`picture result file ${pictureResult}`);
     try {
         const {
             firstName,
@@ -19,8 +21,7 @@ export const register = async (req, res) => {
         const salt = await bcrypt.genSalt();
         const passwordHash = await bcrypt.hash(password, salt);
         const pictureResult = await cloudinary.uploader.upload(req.file.path);
-        console.log(`req file ${req.file}`);
-        console.log(`picture result file ${pictureResult}`);
+
         const newUser = new User({
             firstName,
             lastName,
