@@ -28,6 +28,7 @@ export const register = async (req, res) => {
         console.log(`dataUrI -- ${dataURI}`);
         const pictureResult = await cloudinary.uploader.upload(dataURI, {
             resource_type: "auto",
+            folder: "WaveApp",
         });
         
         console.log(`picture result file -- ${JSON.stringify(pictureResult)}`);
