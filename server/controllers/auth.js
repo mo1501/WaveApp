@@ -24,7 +24,7 @@ export const register = async (req, res) => {
         const passwordHash = await bcrypt.hash(password, salt);
         console.log("req.file:", req.body.file);
         // Create a readable stream from the buffer
-        const pictureStream = Readable.from([req.file.buffer]);
+        const pictureStream = streamifier.createReadStream(req.file.buffer);
 
         const pictureResult = await cloudinary.uploader.upload(pictureStream,{
             upload_preset: 'ml_default',
