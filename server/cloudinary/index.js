@@ -15,8 +15,13 @@ const storage = new CloudinaryStorage({
     allowedFormats: ['jpeg', 'png', 'jpg'],
   },
 });
+const uploadImageToCloudinary = async (path) => {
+  const result = await cloudinary.uploader.upload(path);
+  return result.secure_url;
+};
 
 export  {
   cloudinary,
   storage,
+  uploadImageToCloudinary,
 };

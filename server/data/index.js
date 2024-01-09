@@ -1,4 +1,7 @@
 import mongoose from "mongoose";
+import  {uploadImageToCloudinary}  from '../cloudinary/index.js';
+
+
 
 const userIds = [
   new mongoose.Types.ObjectId(),
@@ -11,6 +14,8 @@ const userIds = [
   new mongoose.Types.ObjectId(),
 ];
 
+
+
 export const users = [
   {
     _id: userIds[0],
@@ -18,7 +23,7 @@ export const users = [
     lastName: "me",
     email: "aaaaaaa@gmail.com",
     password: "$2b$10$dsasdgsagasda//G9JxQ4bQ8KXf4OAIe/X/AK9skyWUy",
-    picturePath: "p11.jpeg",
+    picturePath: await uploadImageToCloudinary("p11.jpeg"),
     friends: [],
     location: "San Fran, CA",
     occupation: "Software Engineer",
@@ -34,7 +39,7 @@ export const users = [
     lastName: "Ralph",
     email: "thataaa@gmail.com",
     password: "$!FEAS@!O)_IDJda//G9JxQ4bQ8KXf4OAIe/X/AK9skyWUy",
-    picturePath: "p3.jpeg",
+    picturePath: await uploadImageToCloudinary("p3.jpeg"),
     friends: [],
     location: "New York, CA",
     occupation: "Degenerate",
@@ -50,7 +55,7 @@ export const users = [
     lastName: "Guy",
     email: "someguy@gmail.com",
     password: "da39a3ee5e6b4b0d3255bfef95601890afd80709",
-    picturePath: "p4.jpeg",
+    picturePath: await uploadImageToCloudinary("p4.jpeg"),
     friends: [],
     location: "Canada, CA",
     occupation: "Data Scientist Hacker",
@@ -66,7 +71,7 @@ export const users = [
     lastName: "Doing",
     email: "whatchadoing@gmail.com",
     password: "$2b$10$dsasdgsagasda//G9JxQ4bQ8KXf4OAIe/X/AK9skyWUy",
-    picturePath: "p6.jpeg",
+    picturePath: await uploadImageToCloudinary("p6.jpeg"),
     friends: [],
     location: "Korea, CA",
     occupation: "Educator",
@@ -78,11 +83,11 @@ export const users = [
   },
   {
     _id: userIds[4],
-    firstName: "Jane",
+    firstName: "Jack",
     lastName: "Doe",
     email: "janedoe@gmail.com",
     password: "$2b$10$dsasdgsagasda//G9JxQ4bQ8KXf4OAIe/X/AK9skyWUy",
-    picturePath: "p5.jpeg",
+    picturePath: await uploadImageToCloudinary("p5.jpeg"),
     friends: [],
     location: "Utah, CA",
     occupation: "Hacker",
@@ -98,7 +103,7 @@ export const users = [
     lastName: "Dunn",
     email: "harveydunn@gmail.com",
     password: "$2b$10$dsasdgsagasda//G9JxQ4bQ8KXf4OAIe/X/AK9skyWUy",
-    picturePath: "p7.jpeg",
+    picturePath: await uploadImageToCloudinary("p7.jpeg"),
     friends: [],
     location: "Los Angeles, CA",
     occupation: "Journalist",
@@ -110,11 +115,11 @@ export const users = [
   },
   {
     _id: userIds[6],
-    firstName: "Carly",
+    firstName: "Carl",
     lastName: "Vowel",
     email: "carlyvowel@gmail.com",
     password: "$2b$10$dsasdgsagasda//G9JxQ4bQ8KXf4OAIe/X/AK9skyWUy",
-    picturePath: "p8.jpeg",
+    picturePath: await uploadImageToCloudinary("p8.jpeg"),
     friends: [],
     location: "Chicago, IL",
     occupation: "Nurse",
@@ -126,11 +131,11 @@ export const users = [
   },
   {
     _id: userIds[7],
-    firstName: "Jessica",
+    firstName: "Jessie",
     lastName: "Dunn",
     email: "jessicadunn@gmail.com",
     password: "$2b$10$dsasdgsagasda//G9JxQ4bQ8KXf4OAIe/X/AK9skyWUy",
-    picturePath: "p9.jpeg",
+    picturePath: await uploadImageToCloudinary("p9.jpeg"),
     friends: [],
     location: "Washington, DC",
     occupation: "A Student",
@@ -151,7 +156,7 @@ export const posts = [
     location: "New York, CA",
     description: "Some really long random description",
     picturePath: "post1.jpeg",
-    userPicturePath: "p3.jpeg",
+    userPicturePath: await uploadImageToCloudinary("p3.jpeg"),
     likes: new Map([
       [userIds[0], true],
       [userIds[2], true],
@@ -172,8 +177,8 @@ export const posts = [
     location: "Korea, CA",
     description:
       "Another really long random description. This one is longer than the previous one.",
-    picturePath: "post2.jpeg",
-    userPicturePath: "p6.jpeg",
+    picturePath: await uploadImageToCloudinary("post2.jpeg"),
+    userPicturePath: await uploadImageToCloudinary("p6.jpeg"),
     likes: new Map([
       [userIds[7], true],
       [userIds[4], true],
@@ -219,8 +224,8 @@ export const posts = [
     location: "Los Angeles, CA",
     description:
       "This is the last really long random description. This one is longer than the previous one. Man I'm bored. I'm going to keep typing until I run out of things to say.",
-    picturePath: "post4.jpeg",
-    userPicturePath: "p7.jpeg",
+    picturePath: await uploadImageToCloudinary("post4.jpeg"),
+    userPicturePath: await uploadImageToCloudinary("p7.jpeg"),
     likes: new Map([
       [userIds[1], true],
       [userIds[6], true],
@@ -243,8 +248,8 @@ export const posts = [
     location: "Chicago, IL",
     description:
       "Just a short description. I'm tired of typing. I'm going to play video games now.",
-    picturePath: "post5.jpeg",
-    userPicturePath: "p8.jpeg",
+    picturePath: await uploadImageToCloudinary("post5.jpeg"),
+    userPicturePath: await uploadImageToCloudinary("p8.jpeg"),
     likes: new Map([
       [userIds[1], true],
       [userIds[3], true],
@@ -267,8 +272,8 @@ export const posts = [
     location: "Washington, DC",
     description:
       "For the last time, I'm going to play video games now. I'm tired of typing. I'm going to play video games now.",
-    picturePath: "post6.jpeg",
-    userPicturePath: "p9.jpeg",
+    picturePath: await uploadImageToCloudinary("post6.jpeg"),
+    userPicturePath: await uploadImageToCloudinary("p9.jpeg"),
     likes: new Map([
       [userIds[1], true],
       [userIds[2], true],

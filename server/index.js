@@ -1,4 +1,5 @@
 import express from "express";
+import {cloudinary} from './cloudinary/index.js';
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
@@ -8,6 +9,7 @@ import morgan from "morgan";
 import path from "path";
 import dotenv from "dotenv"
 import { fileURLToPath } from "url";
+
 import { error } from "console";
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/user.js";
