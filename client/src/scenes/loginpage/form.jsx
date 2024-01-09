@@ -158,7 +158,7 @@ const Form = () => {
         setFieldValue,
         resetForm,
       }) => (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} encType="multipart/form-data">
           <Box
             display="grid"
             gap="30px"
