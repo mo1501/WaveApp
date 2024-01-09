@@ -22,7 +22,7 @@ export const register = async (req, res) => {
         const passwordHash = await bcrypt.hash(password, salt);
         console.log("req.file:", req.body.file);
         const pictureResult = await cloudinary.uploader.upload(req.file.buffer);
-        console.log(`picture result file -- ${JSON.stringify($pictureResult)}`);
+        console.log(`picture result file -- ${JSON.stringify(pictureResult)}`);
         const newUser = new User({
             firstName,
             lastName,
