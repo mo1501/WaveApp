@@ -37,6 +37,7 @@ app.use(cors({
     origin: 'https://wave-app-frontend.vercel.app',
     methods: ["POST", "GET"],
     credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 app.use("/assets", express.static(path.join(__dirname, 'public/assets')));
 

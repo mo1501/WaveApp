@@ -106,6 +106,7 @@ const Form = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
+        credentials: "include", 
       });
 
       // Check if the response status is OK
