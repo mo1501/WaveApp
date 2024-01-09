@@ -9,7 +9,7 @@ import streamifier from 'streamifier';
 /* REGISTER USER */
 export const register = async (req, res) => {
     console.log(` received req body -- ${JSON.stringify(req.file.buffer)}`);
-    
+
     try {
         const {
             firstName,
@@ -23,12 +23,13 @@ export const register = async (req, res) => {
         const salt = await bcrypt.genSalt();
         const passwordHash = await bcrypt.hash(password, salt);
         console.log("req.file:", req.body.file);
-        // Create a readable stream from the buffer
-        const pictureStream = streamifier.createReadStream(req.file.buffer);
-
-        const pictureResult = await cloudinary.uploader.upload(pictureStream,{
-            upload_preset: 'ml_default',
+        const b64 = Buffer.from(req.file.buffer).toString("base64");
+        let dataURI = "data:" + req.file.mimetype + ";base64," + b64;
+        console.log(`dataUrI -- ${dataURI}`);
+        const pictureResult = await cloudinary.uploader.upload(dataURI, {
+            resource_type: "auto",
         });
+        
         console.log(`picture result file -- ${JSON.stringify(pictureResult)}`);
         const newUser = new User({
             firstName,
