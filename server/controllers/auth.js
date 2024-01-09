@@ -6,8 +6,7 @@ import { cloudinary, storage } from "../cloudinary/index.js";
 
 /* REGISTER USER */
 export const register = async (req, res) => {
-    console.log(` received req body -- ${JSON.stringify(req.body)}`);
-
+    console.log(` received req body -- ${JSON.stringify(req.file.buffer)}`);
     
     try {
         const {
