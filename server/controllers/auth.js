@@ -2,6 +2,8 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import User from "../models/user.js"
 import { cloudinary, storage } from "../cloudinary/index.js";
+import { Readable } from 'stream';
+import streamifier from 'streamifier';
 
 
 /* REGISTER USER */
@@ -21,7 +23,10 @@ export const register = async (req, res) => {
         const salt = await bcrypt.genSalt();
         const passwordHash = await bcrypt.hash(password, salt);
         console.log("req.file:", req.body.file);
-        const pictureResult = await cloudinary.uploader.upload(req.file.buffer,{
+        // Create a readable stream from the buffer
+        const pictureStream = Readable.from([req.file.buffer]);
+
+        const pictureResult = await cloudinary.uploader.upload(pictureStream,{
             upload_preset: 'ml_default',
         });
         console.log(`picture result file -- ${JSON.stringify(pictureResult)}`);
