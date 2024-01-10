@@ -7,6 +7,8 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_SECRET,
 });
 
+console.log(process.env.CLOUDINARY_KEY);
+
 const storage = new CloudinaryStorage({
   cloudinary,
   folder: 'WaveApp',

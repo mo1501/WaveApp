@@ -2,8 +2,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import User from "../models/user.js"
 import { cloudinary, storage } from "../cloudinary/index.js";
-import { Readable } from 'stream';
-import streamifier from 'streamifier';
+
 
 
 /* REGISTER USER */
