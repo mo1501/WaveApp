@@ -1,5 +1,7 @@
 import { v2 as cloudinary } from 'cloudinary';
 import { CloudinaryStorage } from 'multer-storage-cloudinary';
+import dotenv from "dotenv/config";
+
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -7,7 +9,8 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_SECRET,
 });
 
-console.log(process.env.CLOUDINARY_KEY);
+
+
 
 const storage = new CloudinaryStorage({
   cloudinary,
@@ -17,13 +20,19 @@ const storage = new CloudinaryStorage({
     allowedFormats: ['jpeg', 'png', 'jpg'],
   },
 });
-const uploadImageToCloudinary = async (path) => {
-  const result = await cloudinary.uploader.upload(path);
-  return result.secure_url;
-};
 
-export  {
+// const uploadImageToCloudinary = async (path) => {
+//   try {
+//     const result = await cloudinary.uploader.upload(path);
+//   return result.secure_url;
+//   } catch (error) {
+//     console.log("Error from upload-data-function", error);
+//   }
+  
+// };
+
+export {
   cloudinary,
   storage,
-  uploadImageToCloudinary,
+  
 };
