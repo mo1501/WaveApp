@@ -6,6 +6,7 @@ import PostWidget from "./PostWidget";
 const PostsWidget = ({ userId, isProfile = false }) => {
     const dispatch = useDispatch();
     const posts = useSelector((state) => state.posts);
+    console.log("Posts before api call", posts);
     const token = useSelector((state) => state.token);
 
     const getPosts = async () => {
@@ -14,6 +15,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
             headers: { Authorization: `Bearer ${token}` },
         });
         const data = await response.json();
+        console.log("Data from getPosts", data);
         dispatch(setPosts({ posts: data }));
     };
 
@@ -26,6 +28,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
             }
         );
         const data = await response.json();
+        console.log("Data from getUserPosts", data);
         dispatch(setPosts({ posts: data }));
     };
 
