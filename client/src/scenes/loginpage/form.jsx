@@ -102,7 +102,7 @@ const Form = () => {
     try {
       setLoading(true);
       setError(null);
-      const loggedInResponse = await fetch("https://wave-app-backend.vercel.app/auth", {
+      const loggedInResponse = await fetch("https://wave-app-backend.vercel.app/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
