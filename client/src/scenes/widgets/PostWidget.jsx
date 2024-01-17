@@ -64,7 +64,7 @@ import {
             height="auto"
             alt="post"
             style={{ borderRadius: "0.75rem", marginTop: "0.75rem" }}
-            src={`https://wave-app-backend.vercel.app/${picturePath}`}
+            src= {picturePath}
           />
         )}
         <FlexBetween mt="0.25rem">
