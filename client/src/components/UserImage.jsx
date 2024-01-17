@@ -8,7 +8,7 @@ const UserImage = ({ image, size = "60px" }) => {
         width={size}
         height={size}
         alt="user"
-        src={`https://wave-app-backend.vercel.app/${image}`}
+        src={image}
       />
     </Box>
   );
