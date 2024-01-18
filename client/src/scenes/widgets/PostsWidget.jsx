@@ -16,6 +16,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
         });
         const data = await response.json();
         console.log("Data from getPosts", data);
+
         dispatch(setPosts({ posts: data }));
     };
 
@@ -37,6 +38,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
             getUserPosts();
         } else {
             getPosts();
+            console.log("useeffect --", posts);
         }
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
