@@ -9,10 +9,8 @@ export const createPost = async (req, res) => {
         const { userId, description, picturePath } = req.body;
         const user = await User.findById(userId);
         console.log("req.body picturepath:", picturePath);
-        const b64 = Buffer.from(picturePath).toString("base64");
-        let dataURI = "data:" + req.file.mimetype + ";base64," + b64;
-        console.log(`dataUrI -- ${dataURI}`);
-        const pictureResult = await cloudinary.uploader.upload(dataURI, {
+        
+        const pictureResult = await cloudinary.uploader.upload(picturePath, {
             resource_type: "auto",
             folder: "WaveApp",
         });
