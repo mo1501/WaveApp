@@ -8,7 +8,7 @@ export const createPost = async (req, res) => {
     try {
         const { userId, description, picturePath } = req.body;
         const user = await User.findById(userId);
-        console.log("req.file:", picturePath);
+        console.log("req.body picturepath:", picturePath);
         const b64 = Buffer.from(picturePath).toString("base64");
         let dataURI = "data:" + req.file.mimetype + ";base64," + b64;
         console.log(`dataUrI -- ${dataURI}`);
@@ -16,6 +16,8 @@ export const createPost = async (req, res) => {
             resource_type: "auto",
             folder: "WaveApp",
         });
+        console.log("picture-result", pictureResult);
+        console.log("picturepath", pictureResult.secure_url);
 
         const newPost = new Post({
             userId,
