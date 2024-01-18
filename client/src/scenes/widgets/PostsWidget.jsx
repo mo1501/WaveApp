@@ -5,7 +5,7 @@ import PostWidget from "./PostWidget";
 
 const PostsWidget = ({ userId, isProfile = false }) => {
     const dispatch = useDispatch();
-    const posts = useSelector((state) => state.posts);
+    const posts = useSelector((state) => state.posts || []);
     console.log("Posts before api call", posts);
     const token = useSelector((state) => state.token);
 
