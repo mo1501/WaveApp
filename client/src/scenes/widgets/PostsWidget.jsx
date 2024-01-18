@@ -17,7 +17,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
         const data = await response.json();
         console.log("Data from getPosts", data);
 
-        dispatch(setPosts(data));
+        dispatch(setPosts({ posts: data }));
     };
 
     const getUserPosts = async () => {
@@ -30,7 +30,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
         );
         const data = await response.json();
         console.log("Data from getUserPosts", data);
-        dispatch(setPosts(data));
+        dispatch(setPosts({ posts: data }));
     };
 
     useEffect(() => {
