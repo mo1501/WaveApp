@@ -41,7 +41,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
             console.log("useeffect --", posts);
         }
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
+    console.log("Posts after API call", posts);
     return (
         <>
             {posts.map(
