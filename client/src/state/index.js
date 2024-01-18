@@ -30,7 +30,12 @@ export const authSlice = createSlice({
       }
     },
     setPosts: (state, action) => {
-      state.posts = action.payload.posts;
+      const receivedPosts = action.payload.posts;
+
+      // If receivedPosts is an object with a 'message' property, extract the array
+      const postsArray = receivedPosts.message ? receivedPosts.message : receivedPosts;
+
+      state.posts = postsArray;
     },
     setPost: (state, action) => {
       const updatedPosts = state.posts.map((post) => {
