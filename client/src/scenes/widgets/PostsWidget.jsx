@@ -44,7 +44,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
     console.log("Posts after API call", posts);
     return (
         <>
-            {Array.isArray(posts) && posts.map(posts.map(
+            {Array.isArray(posts) && posts.map(
                 ({
                     _id,
                     userId,
@@ -70,7 +70,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
                         comments={comments}
                     />
                 )
-            ))}
+            )}
         </>
     );
 };
