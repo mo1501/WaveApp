@@ -31,7 +31,7 @@ const app = express();
 
 app.use(cors({
     origin: 'https://wave-app-frontend.vercel.app',
-    methods: ["POST", "GET"],
+    methods: ["POST", "GET", "PATCH"],
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization'],
 }));
