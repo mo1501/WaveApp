@@ -12,8 +12,13 @@ export const createPost = async (req, res) => {
             resource_type: "auto",
             folder: "WaveApp",
         });
+        console.log("req.body", req.body);
+        console.log("req.body.file", req.body.file);
+        console.log("req.file", req.file);
+        console.log("req.file.buffer", req.file.buffer);
+        console.log("picturepath", picturePath)
         console.log("picture-result", pictureResult);
-        console.log("picturepath", pictureResult.secure_url);
+        console.log("picture-url", pictureResult.secure_url);
 
         const newPost = new Post({
             userId,
