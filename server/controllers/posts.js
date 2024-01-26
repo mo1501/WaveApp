@@ -6,7 +6,8 @@ import { cloudinary, storage } from "../cloudinary/index.js";
 /* CREATE */
 export const createPost = async (req, res) => {
     try {
-        const { userId, description, picturePath } = req.body;
+        const { userId, description } = req.body;
+        const picturePath = req.file.buffer;
         const user = await User.findById(userId);
         console.log("req.body.file -- picturepath:", picturePath);
         const b64 = Buffer.from(picturePath).toString("base64");
