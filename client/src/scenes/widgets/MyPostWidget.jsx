@@ -24,12 +24,14 @@ import {
   import { useState } from "react";
   import { useDispatch, useSelector } from "react-redux";
   import { setPosts } from "state";
+  import Spinner from 'react-bootstrap/Spinner';
   
   const MyPostWidget = ({ picturePath }) => {
     const dispatch = useDispatch();
     const [isImage, setIsImage] = useState(false);
     const [image, setImage] = useState(null);
     const [post, setPost] = useState("");
+    const [isLoadingPost, setIsLoadingPost] = useState(false);
     const { palette } = useTheme();
     const { _id } = useSelector((state) => state.user);
     const token = useSelector((state) => state.token);
@@ -38,6 +40,7 @@ import {
     const medium = palette.neutral.medium;
   
     const handlePost = async () => {
+      setIsLoadingPost(true);
       const formData = new FormData();
       formData.append("userId", _id);
       formData.append("description", post);
@@ -55,6 +58,7 @@ import {
       dispatch(setPosts({ posts }));
       setImage(null);
       setPost("");
+      setIsLoadingPost(false);
     };
   
     return (
@@ -163,7 +167,12 @@ import {
               borderRadius: "3rem",
             }}
           >
-            POST
+           {isLoadingPost ? <Spinner animation="border" variant="primary" />  : <Typography
+              color={mediumMain}
+              sx={{ "&:hover": { cursor: "pointer", color: medium } }}
+            >
+              POST
+            </Typography>}
           </Button>
         </FlexBetween>
       </WidgetWrapper>

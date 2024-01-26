@@ -6,7 +6,6 @@ import {
   useMediaQuery,
   Typography,
   useTheme,
-  CircularProgress
 } from "@mui/material";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import { Formik } from "formik";
@@ -16,7 +15,8 @@ import { useDispatch } from "react-redux";
 import { setLogin } from "state";
 import Dropzone from "react-dropzone";
 import FlexBetween from "components/FlexBetween";
-import { Alert } from "react-bootstrap";
+import Alert from "react-bootstrap/Alert";
+import Spinner from 'react-bootstrap/Spinner';
 
 const registerSchema = yup.object().shape({
   firstName: yup.string().required("required"),
@@ -288,7 +288,7 @@ const Form = () => {
             >
               {isLogin ? "LOGIN" : "REGISTER"}
             </Button>
-            {loading && <CircularProgress color="primary" />}
+            {loading && <Spinner animation="border" variant="primary" />}
             {error && <Alert variant="danger">{error}</Alert>}
             <Typography
               onClick={() => {

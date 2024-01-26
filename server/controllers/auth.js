@@ -7,8 +7,6 @@ import { cloudinary, storage } from "../cloudinary/index.js";
 
 /* REGISTER USER */
 export const register = async (req, res) => {
-    console.log(` received req body -- ${JSON.stringify(req.file.buffer)}`);
-
     try {
         const {
             firstName,
@@ -21,16 +19,13 @@ export const register = async (req, res) => {
         } = req.body;
         const salt = await bcrypt.genSalt();
         const passwordHash = await bcrypt.hash(password, salt);
-        console.log("req.file:", req.body.file);
         const b64 = Buffer.from(req.file.buffer).toString("base64");
         let dataURI = "data:" + req.file.mimetype + ";base64," + b64;
-        console.log(`dataUrI -- ${dataURI}`);
         const pictureResult = await cloudinary.uploader.upload(dataURI, {
             resource_type: "auto",
             folder: "WaveApp",
         });
         
-        console.log(`picture result file -- ${JSON.stringify(pictureResult)}`);
         const newUser = new User({
             firstName,
             lastName,
