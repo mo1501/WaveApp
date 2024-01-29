@@ -76,7 +76,7 @@ const Form = () => {
           method: "POST",
           body: formData,
           credentials: "include",
-          
+
         }
       );
 
@@ -106,7 +106,7 @@ const Form = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
-        credentials: "include", 
+        credentials: "include",
       });
 
       // Check if the response status is OK
@@ -124,7 +124,7 @@ const Form = () => {
             token: loggedIn.token,
           })
         );
-        
+
         navigate("/home");
       }
     } catch (error) {
@@ -275,7 +275,7 @@ const Form = () => {
 
           {/* BUTTONS */}
           <Box>
-            <Button
+            {loading ? <Spinner animation="border" variant="primary" /> : <Button
               fullWidth
               type="submit"
               sx={{
@@ -287,9 +287,11 @@ const Form = () => {
               }}
             >
               {isLogin ? "LOGIN" : "REGISTER"}
-            </Button>
-            {loading && <Spinner animation="border" variant="primary" />}
+            </Button>}
+
+
             {error && <Alert variant="danger">{error}</Alert>}
+
             <Typography
               onClick={() => {
                 setPageType(isLogin ? "register" : "login");
@@ -308,7 +310,7 @@ const Form = () => {
                 ? "Don't have an account? Sign Up here."
                 : "Already have an account? Login here."}
             </Typography>
-            
+
 
           </Box>
         </form>
