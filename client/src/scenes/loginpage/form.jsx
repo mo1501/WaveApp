@@ -82,7 +82,7 @@ const Form = () => {
 
       // Check if the response status is OK
       if (!savedUserResponse.ok) {
-        throw new Error(`Failed to register user: ${savedUserResponse.statusText}`);
+        throw new Error(`Failed to register user ${savedUserResponse.statusText}`);
       }
 
       const savedUser = await savedUserResponse.json();
@@ -111,7 +111,7 @@ const Form = () => {
 
       // Check if the response status is OK
       if (!loggedInResponse.ok) {
-        throw new Error(`Failed to log in: ${loggedInResponse.statusText}`);
+        throw new Error(`Failed to log in ${loggedInResponse.statusText}`);
       }
 
       const loggedIn = await loggedInResponse.json();
@@ -275,19 +275,31 @@ const Form = () => {
 
           {/* BUTTONS */}
           <Box>
-            {loading ? <Spinner animation="border" variant="primary" /> : <Button
-              fullWidth
-              type="submit"
-              sx={{
-                m: "2rem 0",
-                p: "1rem",
-                backgroundColor: palette.primary.main,
-                color: palette.background.alt,
-                "&:hover": { color: palette.primary.main },
-              }}
-            >
-              {isLogin ? "LOGIN" : "REGISTER"}
-            </Button>}
+            {loading ?
+              <Box
+                p="2rem"
+                m="2rem 0"
+                display="flex"
+                flexDirection="column"
+                alignItems="center"
+                justifyContent="center">
+                <Spinner animation="border" variant="primary" />
+              </Box>
+              :
+
+              <Button
+                fullWidth
+                type="submit"
+                sx={{
+                  m: "2rem 0",
+                  p: "1rem",
+                  backgroundColor: palette.primary.main,
+                  color: palette.background.alt,
+                  "&:hover": { color: palette.primary.main },
+                }}
+              >
+                {isLogin ? "LOGIN" : "REGISTER"}
+              </Button>}
 
 
             {error && <Alert variant="danger">{error}</Alert>}
