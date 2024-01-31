@@ -1,8 +1,4 @@
 # Wave Social Media App
-![Screenshot 1](server/public/assets/Wave1.png)
-![Screenshot 2](server/public/assets/Wave2.png)
-![Screenshot 3](server/public/assets/Wave3.png)
-![Screenshot 4](server/public/assets/Wave4.png)
 
 ## Overview
 Wave is a MERN stack social media app that provides a platform for users to connect, share posts, and interact with each other. The app includes features such as user authentication, posting content, liking posts and comments, adding friends, dark mode, and CORS protection.
@@ -12,6 +8,8 @@ Wave is a MERN stack social media app that provides a platform for users to conn
 ### User Authentication
 - Secure account creation and login.
 - Implementation of JSON Web Tokens (JWT) for secure user authentication.
+![Screenshot 1](server/public/assets/Wave1.png)
+![Screenshot 2](server/public/assets/Wave2.png)
 
 ### Posting Content
 - Users can create and share posts with text and media.
@@ -26,6 +24,8 @@ Wave is a MERN stack social media app that provides a platform for users to conn
 
 ### Dark Mode
 - The app features a dark mode for users who prefer a darker color scheme.
+![Screenshot 3](server/public/assets/Wave3.png)
+![Screenshot 4](server/public/assets/Wave4.png)
 
 ### CORS Protection
 - Implementation of Cross-Origin Resource Sharing (CORS) for controlled resource access and enhanced security.
